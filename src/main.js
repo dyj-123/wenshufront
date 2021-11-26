@@ -26,6 +26,22 @@ axios.defaults.baseURL = 'http://10.10.22.60/api';
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
+
+// 添加请求拦截器，在请求头中加token
+axios.interceptors.request.use(
+    config => {
+      if (localStorage.getItem("token")) {
+          console.log(localStorage.getItem("token"));
+          config.headers.Authorization = localStorage.getItem("token");
+      }
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+);
+
+
 new Vue({
   router,
   render: h => h(App)

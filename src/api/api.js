@@ -133,3 +133,8 @@ export function getWenshuBySpiderName(spiderName,curPage,pageSize) {
             }
         });
 }
+
+export function login(params){
+    return axios.post('/v1/login',params,{ headers: {
+            'Content-Type': false}})
+}

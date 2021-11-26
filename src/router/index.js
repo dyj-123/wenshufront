@@ -6,6 +6,7 @@ import wenshuList from "@/components/wenshuList";
 import Search from "@/components/Search";
 import Control from "@/components/Control";
 import SpideInfo from "@/components/SpideInfo";
+import Login from "../components/Login";
 
 
 Vue.use(Router);
@@ -16,8 +17,14 @@ Router.prototype.push = function push (location) {
 export default new Router({
     routes:[
         {
-            path:'/',
-            redirect:'/Home',
+            // 重定向
+            path: '/',
+            redirect: '/Login'
+        },
+        {
+           path:'/Login',
+            name:'Login',
+            component:Login
 
         },{
             path: '/Home',
