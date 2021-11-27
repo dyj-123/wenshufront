@@ -1,5 +1,5 @@
 import axios from 'axios'
-axios.defaults.baseURL = '/api';
+
 
 export function getNum() {
     return axios.get('/v1/getWenshuNum');
@@ -135,6 +135,9 @@ export function getWenshuBySpiderName(spiderName,curPage,pageSize) {
 }
 
 export function login(params){
-    return axios.post('/v1/login',params,{ headers: {
-            'Content-Type': false}})
+    return axios.post('/v1/login',params)
+}
+export function filter() {
+    return axios.post('/v1/test');
+
 }

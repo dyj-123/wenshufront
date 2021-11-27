@@ -1,5 +1,5 @@
 <template>
-    <Layout  class="back" :style="back">
+    <Layout  class="back">
         <Header :style="{position: 'fixed', width: '100%',padding: 0}" style="z-index: 3">
             <Menu mode="horizontal" theme="light" :active-name="activeName">
 
@@ -61,8 +61,13 @@
                     </MenuGroup>
 
                 </Submenu>
-
                 <MenuItem name="100" to="Control" style="float: right">
+
+                    欢迎 {{username}}！
+
+                </MenuItem>
+
+                <MenuItem name="101" to="Control" style="float: right">
                     <Icon type="ios-construct" />
                     控制台
 
@@ -208,6 +213,7 @@
         components:{Search},
         data(){
             return{
+                username:"",
                 activeName:-1,
                 curPage:1,
                 pageSize:5,
@@ -481,7 +487,7 @@
                 this.anjianNum = '';
                 this.file = '';
                 this.getList();
-                localStorage.clear();
+                //localStorage.clear();
                 localStorage.setItem('s8',s8);
 
                 location.reload();
@@ -519,6 +525,7 @@
 
         },
         mounted(){
+            this.username = localStorage.getItem("username");
             this.getTime();
             this.activeName = localStorage.getItem("s8");
             if(localStorage.getItem("s4")!=''&&localStorage.getItem("s4")!=null){

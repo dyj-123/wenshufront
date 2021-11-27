@@ -64,10 +64,17 @@
                         </MenuGroup>
                     </Submenu>
                     <MenuItem name="100" to="Control" style="float: right">
+
+                        欢迎 {{username}}！
+
+                    </MenuItem>
+
+                    <MenuItem name="101" to="Control" style="float: right">
                         <Icon type="ios-construct" />
                         控制台
 
                     </MenuItem>
+
 
 
                 </Menu>
@@ -122,6 +129,7 @@
         components: {Bar,Search},
         data(){
             return{
+                username:"",
                 simplesearch:'',
                 labelPosition: 'right',
                 anjianName:'',
@@ -197,7 +205,7 @@
                         'courtName':'',
                         'file':''
                     }});
-               localStorage.clear();
+              // localStorage.clear();
 
                 localStorage.setItem("s8",s8);
             },
@@ -223,6 +231,8 @@
 
         },
         mounted(){
+            this.username = localStorage.getItem("username");
+
             var isSearch;
             this.$refs['search'].$on('title',(msg)=>{
                 this.anjianName=msg;
